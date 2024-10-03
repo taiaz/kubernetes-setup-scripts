@@ -19,13 +19,13 @@ This document provides instructions for setting up the **master node** and **wor
 
 3. **Run the master setup script:**
 
-   - Helm is used to deploy and manage applications on Kubernetes clusters:
+- Helm is used to deploy and manage applications on Kubernetes clusters:
 
    ```bash
    curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
    ```
 
-   - Verify the installation:
+- Verify the installation:
 
    ```bash
    helm version
