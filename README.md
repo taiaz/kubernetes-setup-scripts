@@ -38,20 +38,6 @@ This document provides instructions for setting up the **master node** and **wor
    ./k8s-master-setup.sh
    ```
 
-3. **Run the master setup script:**
-
-- Helm is used to deploy and manage applications on Kubernetes clusters:
-
-   ```bash
-   curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
-   ```
-
-- Verify the installation:
-
-   ```bash
-   helm version
-   ```
-
 
 ## Worker Node Setup
 
