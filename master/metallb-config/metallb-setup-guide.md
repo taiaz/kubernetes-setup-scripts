@@ -30,9 +30,9 @@ This guide provides instructions to install and configure MetalLB in your Kubern
     ```bash
     kubectl get pods -n metallb-system
     ```
-    
 
 You should see several pods, such as the controller and speaker pods, running in the `metallb-system` namespace. Ensure that all pods are in the `Running` state before proceeding to the next step.
+
 
 ## Configuring MetalLB
 
@@ -63,7 +63,7 @@ The `IPAddressPool` resource defines a range of IP addresses that MetalLB can al
     kubectl apply -f ipaddresspool.yaml
     ```
 
-   This command creates an IP address pool named `my-ip-pool` with a single IP (`192.168.1.240, 192.168.1.241/32`). The `autoAssign: true` flag allows MetalLB to automatically assign addresses from this pool to services.
+   This command creates an IP address pool named `my-ip-pool` with multiple IPs (`192.168.1.240`, `192.168.1.241`). The `autoAssign: true` flag allows MetalLB to automatically assign addresses from this pool to services.
 
 ### Step 4: Create L2Advertisement
 
@@ -90,6 +90,7 @@ The `L2Advertisement` resource instructs MetalLB to use Layer 2 mode to advertis
 
    This command sets up Layer 2 advertisement for the IP addresses defined in `my-ip-pool`.
 
+
 ## Verification
 
 After applying the configurations, verify that MetalLB is properly set up:
@@ -109,6 +110,7 @@ After applying the configurations, verify that MetalLB is properly set up:
     ```
 
    You should see `my-l2-advertisement` listed, indicating that Layer 2 advertisement is set up correctly.
+
 
 ## Testing the Setup
 
@@ -146,7 +148,8 @@ To test if MetalLB is working as expected, you can create a `LoadBalancer` servi
     kubectl get service my-service
     ```
 
-   You should see an external IP address assigned to the `my-service` service, which is the IP address from the `my-ip-pool`.
+   You should see an external IP address assigned to the `my-service` service, which is one of the IP addresses from the `my-ip-pool`.
+
 
 ## Troubleshooting
 
@@ -158,19 +161,21 @@ To test if MetalLB is working as expected, you can create a `LoadBalancer` servi
 
 - **No External IP Assigned**: If no external IP address is assigned to your service, ensure that:
   - The `IPAddressPool` and `L2Advertisement` configurations have been applied correctly.
-  - The IP address in the pool (`192.168.1.240`) is available and not used by another service or device.
+  - The IP addresses in the pool (`192.168.1.240`, `192.168.1.241`) are available and not used by another service or device.
+
 
 ## Summary
 
 - **MetalLB Installation**: Installed MetalLB in the `metallb-system` namespace.
-- **IPAddressPool** (`ipaddresspool.yaml`): Defined a pool of IP addresses (`192.168.1.240, 192.168.1.241`) for MetalLB to allocate.
+- **IPAddressPool** (`ipaddresspool.yaml`): Defined a pool of IP addresses (`192.168.1.240`, `192.168.1.241`) for MetalLB to allocate.
 - **L2Advertisement** (`l2advertisement.yaml`): Configured MetalLB to advertise the IP addresses using Layer 2.
 - **Service Testing**: Created a sample LoadBalancer service to verify that MetalLB assigns an external IP address.
 
 MetalLB provides a simple way to enable load balancing for services in your Kubernetes cluster by managing a pool of IP addresses and advertising them over the network.
 
+
 ## Notes
 
-- Ensure that the IP address (`192.168.1.240, 192.168.1.241`, ...) is available in your network and is not being used elsewhere.
+- Ensure that the IP addresses (`192.168.1.240`, `192.168.1.241`, ...) are available in your network and are not being used elsewhere.
 - MetalLB should only be deployed in a network environment that supports Layer 2 or BGP, depending on your configuration.
 - Check the status of MetalLB components regularly to ensure that the load balancing is working correctly.
