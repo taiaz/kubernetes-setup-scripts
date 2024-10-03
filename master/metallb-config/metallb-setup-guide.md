@@ -17,7 +17,7 @@ This guide provides instructions to install and configure MetalLB in your Kubern
 
 ### Step 1: Install MetalLB
 
-To install MetalLB in your Kubernetes cluster, apply the manifest file from the official MetalLB GitHub repository:
+- To install MetalLB in your Kubernetes cluster, apply the manifest file from the official MetalLB GitHub repository:
 
     ```bash
     kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.10/config/manifests/metallb-native.yaml
@@ -25,7 +25,7 @@ To install MetalLB in your Kubernetes cluster, apply the manifest file from the 
 
 ### Step 2: Verify Installation
 
-After installing MetalLB, verify that the necessary pods are running properly:
+- After installing MetalLB, verify that the necessary pods are running properly:
 
     ```bash
     kubectl get pods -n metallb-system
