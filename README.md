@@ -2,12 +2,13 @@
 
 This document provides instructions for setting up the **master node** and **worker node** in a Kubernetes cluster using automated setup scripts.
 
+
 ## Master Node Setup
 
 1. **Grant execute permissions for the master setup script:**
 
    ```bash
-   chmod +x k8s-setup-script.sh
+   chmod +x k8s-master-setup.sh
    ```
 
 2. **Run the master setup script:**
@@ -15,6 +16,21 @@ This document provides instructions for setting up the **master node** and **wor
    ```bash
    ./k8s-master-setup.sh
    ```
+
+3. **Run the master setup script:**
+
+   - Helm is used to deploy and manage applications on Kubernetes clusters:
+
+   ```bash
+   curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+   ```
+
+   - Verify the installation:
+
+   ```bash
+   helm version
+   ```
+
 
 ## Worker Node Setup
 
