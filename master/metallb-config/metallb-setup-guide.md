@@ -3,6 +3,19 @@
 This guide provides instructions to install and configure MetalLB in your Kubernetes cluster, specifically using the `IPAddressPool` and `L2Advertisement` resources to manage IP address allocation and Layer 2 advertisement.
 
 
+## Folder Structure
+
+- This guide uses the following files to deploy **MetalLB**:
+
+    ```plaintext
+    metallb-config/
+    ├── example-service.yaml          # Example LoadBalancer Service configuration
+    ├── ipaddresspool.yaml            # IPAddressPool configuration for MetalLB
+    ├── l2advertisement.yaml          # L2Advertisement configuration for MetalLB
+    ├── metallb-setup-guide.md        # Setup guide for MetalLB
+    ```
+    
+
 ## Prerequisites
 
 - **Kubernetes Cluster**: Make sure you have a running Kubernetes cluster.

@@ -22,7 +22,7 @@ This guide provides instructions for setting up **Ingress Nginx** and **Cert-Man
     ├── letsencrypt-clusterissuer.yaml       # ClusterIssuer configuration for Cert-Manager
     ```
 
-## Step-by-Step Setup
+## Installation
 
 ### Step 1: Install Ingress Nginx and Cert-Manager Using the Script
 

@@ -1,6 +1,27 @@
 # Kubernetes Setup Guide for Master Node and Worker Node
 
-This document provides instructions for setting up the **master node** and **worker node** in a Kubernetes cluster using automated setup scripts.
+This document provides instructions for setting up the **master node** and **worker node** in a Kubernetes cluster using automated setup scripts. It also includes separate configurations for **Ingress Nginx**, **Cert-Manager**, and **MetalLB** as load balancer solutions.
+
+
+## Folder Structure
+
+- The folder `kubernetes` includes the following directories and files to deploy **Kubernetes Master/Worker Node Setup**, **Ingress Nginx**, **Cert-Manager**, and **MetalLB**:
+
+    ```plaintext
+    kubernetes/
+    ├── k8s-ingress-cert-setup/
+    │   ├── ingress-cert-setup-guide.md          # The setup guide for Ingress Nginx and Cert-Manager
+    │   ├── ingress-nginx-service.yaml           # Service configuration for Ingress Nginx
+    │   ├── install-ingress-cert-manager.sh      # Bash script to automate installation of Ingress Nginx and Cert-Manager
+    │   ├── letsencrypt-clusterissuer.yaml       # ClusterIssuer configuration for Cert-Manager
+    ├── metallb-config/
+    │   ├── example-service.yaml                 # Example LoadBalancer Service configuration
+    │   ├── ipaddresspool.yaml                   # IPAddressPool configuration for MetalLB
+    │   ├── l2advertisement.yaml                 # L2Advertisement configuration for MetalLB
+    │   ├── metallb-setup-guide.md               # Setup guide for MetalLB
+    ├── k8s-master-setup.sh                      # Bash script for setting up the Kubernetes Master node
+    ├── k8s-worker-setup.sh                      # Bash script for setting up the Kubernetes Worker nodes
+    ```
 
 
 ## Master Node Setup
