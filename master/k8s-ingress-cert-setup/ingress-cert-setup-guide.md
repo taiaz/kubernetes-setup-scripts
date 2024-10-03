@@ -151,14 +151,6 @@ This guide provides instructions for setting up **Ingress Nginx** and **Cert-Man
 
    - Cert-Manager will use the `letsencrypt-prod` ClusterIssuer to request a certificate for the specified host (`example.yourdomain.com`), and store it in a Kubernetes secret named `example-tls`.
 
-### Notes
-
-- **Namespaces**: The script and YAML files will create necessary namespaces (`ingress-nginx` and `cert-manager`) if they do not already exist.
-- **External IP Address**: Since MetalLB is being used, an IP address will be automatically assigned from the configured pool to expose the Ingress Nginx service.
-- **Certificate Renewal**: Let's Encrypt certificates issued by **Cert-Manager** are valid for 90 days, and **Cert-Manager** will automatically handle renewals before expiration.
-- **Logs**: The installation process is logged to `install_ingress_cert_manager.log`, which can be used for troubleshooting if any issues occur.
-- **Ingress Domain**: Ensure that the domain (`example.yourdomain.com`) used in the Ingress resource is correctly pointed to the IP address assigned by MetalLB in your DNS configuration.
-
 ### Summary
 
 - **Installed Ingress Nginx**: Installed and configured the Ingress Nginx controller using Helm and exposed it with a LoadBalancer service managed by MetalLB.
@@ -167,3 +159,11 @@ This guide provides instructions for setting up **Ingress Nginx** and **Cert-Man
 - **Configured Ingress Resource**: Created an example Ingress resource to verify that certificates are being issued by Let's Encrypt.
 
 Follow these steps to complete the setup of **Ingress Nginx** and **Cert-Manager** in your Kubernetes cluster, ensuring that your applications can handle external traffic securely with valid SSL certificates.
+
+### Notes
+
+- **Namespaces**: The script and YAML files will create necessary namespaces (`ingress-nginx` and `cert-manager`) if they do not already exist.
+- **External IP Address**: Since MetalLB is being used, an IP address will be automatically assigned from the configured pool to expose the Ingress Nginx service.
+- **Certificate Renewal**: Let's Encrypt certificates issued by **Cert-Manager** are valid for 90 days, and **Cert-Manager** will automatically handle renewals before expiration.
+- **Logs**: The installation process is logged to `install_ingress_cert_manager.log`, which can be used for troubleshooting if any issues occur.
+- **Ingress Domain**: Ensure that the domain (`example.yourdomain.com`) used in the Ingress resource is correctly pointed to the IP address assigned by MetalLB in your DNS configuration.
